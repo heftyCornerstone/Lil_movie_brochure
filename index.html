@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./src/style.css">
+        <link rel="stylesheet" href="./src/styles/categoryBoard.css">
+        <link rel="stylesheet" href="./src/styles/movieCard.css">
+        <link rel="stylesheet" href="./src/styles/modal.css">
+        <title>Lil Movie Brochure</title>
+    </head>
+    <body>
+        <header>
+            <div class="header_inner">
+                <div class="bookMarksWrapper"><button id="bookMarksBtn" type="button">북마크</button></div>
+                <div class="title">
+                    <h1>Lil Movie Brochure</h1>
+                    <input type="text" placeholder="어떤 영화를 찾으시나요?">
+                </div>
+            </div>
+        </header>
+
+        <main id="main"></main>
+        
+        <footer></footer>
+
+        <div id="modalScreen" class="closeModal">
+            <div class="modal">
+                <div class="modal_inner">
+                    <div class="modalCloseBtnWrapper"><button id="modalCloseBtn" type="button">X</button></div>
+                    <div class="modal_inner_modalPoster">
+                        <img src="https://media.posterlounge.com/img/products/770000/760129/760129_poster.jpg" alt="img">
+                    </div>
+
+                    <div class="modalInfo">
+                        <div class="modalInfo_head">
+                            <div class="modalInfo_head_title"><h2></h2></div>
+                            
+                            <div class="modalInfo_head_dateAndStars">
+                                <div class="modalInfo_head_dateAndStars_releaseDate"></div>
+                                <div class="modalInfo_head_dateAndStars_stars"></div>
+                            </div>
+                        </div>
+
+                        <div class="modalInfo_overview"></div>
+                    </div>
+                    <div class="modalBookmarkBtnWrapper"><button id="modalBookmarkBtn" type="button">북마크 추가하기</button></div>
+                </div>
+            </div>
+        </div>
+
+        <template id="contentsTemp">
+            <section class="category">
+                <div class="category_inner">
+                    <div class="category_inner_title"><h2></h2></div>
+                    <div class="category_inner_slider">
+                        <button class='sliderBtn LeftSliderBtn' type="button"><</button>
+                        <div class="movieCardsContainer">
+                            <div class="movieCardsBoard">
+                            </div>
+                        </div>
+                        <button class='sliderBtn RightSliderBtn' type="button">></button>
+                    </div>
+                </div>
+            </section>
+        </template>
+        
+        <template id="movieCardTemp">
+            <div class="movieCardWrapper">
+                <div class="movieCard">
+                    <div class="movieCard_poster">
+                        <img class="movieCard_poster_posterImg" src="" alt="img">
+                    </div>
+                    <div class="movieCard_info">
+                        <div class="movieCard_info_inner">
+                            <h4 class="movieCard_info_inner_movieTitle"></h4>
+                            <div class="movieCard_info_inner_stars"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        
+    </body>
+    <script src="./src/script.js" type="module"></script>
+</html>
