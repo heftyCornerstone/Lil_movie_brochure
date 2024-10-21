@@ -1,12 +1,29 @@
 import { getMovieByTitle } from "./getTmdbData.js";
 import { appendMovieCardList } from "./paintMovieListView.js";
 
+const movieSearchbar = document.querySelector('#movieSearchbar');
+
 async function searchMovies(e){
     const inputText = e.target.value.toLowerCase();
-    const searchedMovieData = await getMovieByTitle(inputText);
-    console.log(searchedMovieData);
+    const rawSearchedMovieData = await getMovieByTitle(inputText);
+    const searchedMovieData = rawSearchedMovieData.results;
+    const movieTitles = [];
+    for(let i=0; i<searchedMovieData.length; i++){
+        const curMovieTitle = searchedMovieData[i].title;
+        movieTitles.push(curMovieTitle);
+    }
+    console.log(searchedMovieData[0]);
+    console.log(movieTitles);
 }
 
+async function infiniteScroll(){
+    const inputText = movieSearchbar.value.toLowerCase();
+    const searchedMovieData = await getMovieByTitle(inputText);
+    //{page: 1, results: Array(20), total_pages: 345, total_results: 6890}
+    return ()=>{
+
+    }
+}
 
 export {searchMovies}
 

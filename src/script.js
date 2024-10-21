@@ -1,4 +1,5 @@
-import { openModal, modalClose, handleBookmarkData } from "./modules/handleModal.js"
+import { openModal, modalClose} from "./modules/handleModal.js"
+import { handleBookmarkData } from "./modules/showBookmarkList.js";
 import { paintHomeView} from "./modules/paintHomeView.js"
 import { showBookmarkList } from "./modules/showBookmarkList.js";
 import { searchMovies } from "./modules/searchMovies.js";
@@ -30,7 +31,6 @@ window.onload = ()=>{
 모달 시놉시스 칸에 뜨는 스크롤을 숨겨보자
 북마크 보기 / 홈으로 가기 토글 버튼 글자를 아이콘으로 바꾸자
 반복적인 코드를 줄이자
-  모달과 무비리스트뷰에서 중복되는 함수
   영화 카테고리명
 주석 달자
 */

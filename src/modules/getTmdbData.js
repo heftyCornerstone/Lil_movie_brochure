@@ -19,6 +19,24 @@ async function getMovieData(){
     }
 }
 
+//이름으로 영화 데이터 가져오기
+async function getMovieByTitle(movieTitle, page=1){
+    const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/search/movie?language=ko&page=${page}&query=${movieTitle}`, options);
+    const searchedMovies = await rawSearchedMovie.json();
+    return searchedMovies;
+}
+
+//아이디로 영화 데이터 가져오기
+async function getMovieById(movieId){
+    const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options);
+    const searchedMovie = await rawSearchedMovie.json();
+    return searchedMovie;
+}
+
+
+export {getMovieData, getMovieByTitle, getMovieById}
+
+
 //영화 장르 id 가져오기
 // async function getMovieGenreList(){
 //     try{
@@ -31,13 +49,3 @@ async function getMovieData(){
 //         throw(err); 
 //     }
 // }
-
-//이름으로 영화 데이터 가져오기 ...페이지 받아올 수 있도록 바꾸기
-async function getMovieByTitle(movieTitle){
-    const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/search/movie?language=ko&query=${movieTitle}`, options);
-    const searchedMovies = await rawSearchedMovie.json();
-    return searchedMovies;
-}
-
-
-export {getMovieData, getMovieByTitle}

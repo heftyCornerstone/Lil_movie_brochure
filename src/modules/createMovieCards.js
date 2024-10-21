@@ -54,10 +54,12 @@ function createNoMoviesBanner(){
 //영화 카드 생성
 function createMovieCard(movieData){
   const newMovieCard = movieCardTemp.content.cloneNode(true).children[0];
+  const thisMovieCard = newMovieCard.querySelector('.movieCard');
   const posterImg = newMovieCard.querySelector('.movieCard_poster_posterImg');
   const movieTitle = newMovieCard.querySelector('.movieCard_info_inner_movieTitle');
   const stars = newMovieCard.querySelector('.movieCard_info_inner_stars');
 
+  thisMovieCard.setAttribute('id', movieData.id);
   posterImg.setAttribute('src', `https://image.tmdb.org/t/p/original/${movieData.poster_path}`);
   movieTitle.innerHTML = movieData.title;
   stars.innerHTML = `${Math.round(movieData.vote_average)} / 10`;

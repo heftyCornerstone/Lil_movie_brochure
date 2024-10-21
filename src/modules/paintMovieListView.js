@@ -1,11 +1,11 @@
 import { createMovieCard } from "./createMovieCards.js";
-import { getMovieByTitle } from "./getTmdbData.js";
+import { getMovieById } from "./getTmdbData.js";
 
 const main = document.querySelector('#main');
 const movieListContents = document.querySelector('.movieListContents');
 
 //홈 화면 -> 영화 카드 리스트 화면으로 전환
-function paintMovieListView(movieTitleArr){ 
+function paintMovieListView(movieIdArr){ 
     const homeView = document.querySelector('.homeContents');
     const newMovieListContents = document.createElement('div');
     newMovieListContents.classList.add('movieListContents');
@@ -16,19 +16,16 @@ function paintMovieListView(movieTitleArr){
     main.appendChild(newMovieListContents);
     
     //영화 카드 채워넣기
-    appendMovieCardList(movieTitleArr, newMovieListContents);
+    appendMovieCardList(movieIdArr, newMovieListContents);
 }
 
-//영화 제목이 든 어레이를 이용하여 주어진 화면에 영화 카드를 채워넣는다.
-async function appendMovieCardList(movieTitleArr, appendTo){
-    for(let movie of movieTitleArr) {
-        const rawMovieData = await getMovieByTitle(movie);
-        const movieData = rawMovieData.results;
-        
-        movieData.forEach((searchedMovie)=>{
-            const newCard = createMovieCard(searchedMovie);
-            appendTo.appendChild(newCard);
-        })
+//영화 id가 든 어레이를 이용하여 주어진 화면에 영화 카드를 채워넣는다.
+async function appendMovieCardList(movieIdArr, appendTo){
+    for(let movieId of movieIdArr) {
+        const movieData = await getMovieById(movieId);
+        const newCard = createMovieCard(movieData);
+
+        appendTo.appendChild(newCard);
     }
 }
 
