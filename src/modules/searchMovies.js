@@ -15,13 +15,14 @@ async function searchMovies(e){
     paintMovieListView(movieIds);
 }
 
-async function infiniteScroll(){
-    const inputText = movieSearchbar.value.toLowerCase();
-    const searchedMovieData = await getMovieByTitle(inputText);
-    //{page: 1, results: Array(20), total_pages: 345, total_results: 6890}
-    return ()=>{
+// async function infiniteScroll(){
+//     const inputText = movieSearchbar.value.toLowerCase();
+//     const searchedMovieData = await getMovieByTitle(inputText);
+//     //{page: 1, results: Array(20), total_pages: 345, total_results: 6890}
+//     return ()=>{
 
-    }
-}
+//     }
+// }
 
 export {searchMovies}
+
