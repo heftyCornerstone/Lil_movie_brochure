@@ -58,9 +58,11 @@ function createMovieCard(movieData){
   const posterImg = newMovieCard.querySelector('.movieCard_poster_posterImg');
   const movieTitle = newMovieCard.querySelector('.movieCard_info_inner_movieTitle');
   const stars = newMovieCard.querySelector('.movieCard_info_inner_stars');
+  const posterPath = (movieData.poster_path) ? 
+    `https://image.tmdb.org/t/p/original/${movieData.poster_path}` : '../../src/imgs/no_poster_available.png'
 
   thisMovieCard.setAttribute('id', movieData.id);
-  posterImg.setAttribute('src', `https://image.tmdb.org/t/p/original/${movieData.poster_path}`);
+  posterImg.setAttribute('src', posterPath);
   movieTitle.innerHTML = movieData.title;
   stars.innerHTML = `${Math.round(movieData.vote_average)} / 10`;
 

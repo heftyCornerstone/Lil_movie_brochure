@@ -2,10 +2,10 @@ import { createMovieCard } from "./createMovieCards.js";
 import { getMovieById } from "./getTmdbData.js";
 
 const main = document.querySelector('#main');
-const movieListContents = document.querySelector('.movieListContents');
 
 //홈 화면 -> 영화 카드 리스트 화면으로 전환
 function paintMovieListView(movieIdArr){ 
+    const movieListContents = document.querySelector('.movieListContents');
     const homeView = document.querySelector('.homeContents');
     const newMovieListContents = document.createElement('div');
     newMovieListContents.classList.add('movieListContents');
@@ -15,6 +15,7 @@ function paintMovieListView(movieIdArr){
     if(movieListContents) main.replaceChild(newMovieListContents, movieListContents);
     main.appendChild(newMovieListContents);
     
+
     //영화 카드 채워넣기
     appendMovieCardList(movieIdArr, newMovieListContents);
 }
