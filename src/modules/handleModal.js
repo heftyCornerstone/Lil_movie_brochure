@@ -1,4 +1,4 @@
-import { getMovieByTitle } from "./getTmdbData.js"
+import { getMovieById } from "./getTmdbData.js"
 import { bookmarkParser } from "./showBookmarkList.js";
 
 const modalScreen = document.querySelector('#modalScreen');
@@ -13,18 +13,16 @@ const modalBookmarkBtn = document.querySelector('#modalBookmarkBtn');
 //모달창 컨텐츠 채우기
 async function generateModalContents(movieCard){
   const movieId = movieCard.getAttribute('id');
-  const movieTitle = movieCard.querySelector('.movieCard_info_inner_movieTitle').innerHTML;
-  const movieData = await getMovieByTitle(movieTitle);
-  const currentMovie = movieData.results[0];
+  const movieData = await getMovieById(movieId);
   const bookmarkSet = bookmarkParser();
-  const isBookmarked = (bookmarkSet) ? bookmarkSet.has(movieTitle) : null;
+  const isBookmarked = (bookmarkSet) ? bookmarkSet.has(movieId) : null;
 
   modal.setAttribute('id', movieId);
-  modalPoster.setAttribute('src',`https://image.tmdb.org/t/p/original/${currentMovie.poster_path}`);
-  modalTitle.innerHTML = currentMovie.title;
-  modalReleaseDate.innerHTML = `개봉일: ${currentMovie.release_date}`;
-  modalStars.innerHTML = `평점: ${Math.round(currentMovie.vote_average)}/10`;
-  modalOverview.innerHTML = (currentMovie.overview.length) ? currentMovie.overview : '시놉시스가 제공되지 않는 영화입니다';
+  modalPoster.setAttribute('src',`https://image.tmdb.org/t/p/original/${movieData.poster_path}`);
+  modalTitle.innerHTML = movieData.title;
+  modalReleaseDate.innerHTML = `개봉일: ${movieData.release_date}`;
+  modalStars.innerHTML = `평점: ${Math.round(movieData.vote_average)}/10`;
+  modalOverview.innerHTML = (movieData.overview.length) ? movieData.overview : '시놉시스가 제공되지 않는 영화입니다';
   modalBookmarkBtn.innerHTML = (isBookmarked) ? '북마크 삭제하기' : '북마크 추가하기';
 }
 
