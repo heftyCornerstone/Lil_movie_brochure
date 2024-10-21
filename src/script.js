@@ -1,11 +1,13 @@
 import { openModal, modalClose, handleBookmarkData } from "./modules/handleModal.js"
 import { paintHomeView} from "./modules/paintHomeView.js"
-import { showBookmarkList } from "./modules/paintMovieListView.js";
+import { showBookmarkList } from "./modules/showBookmarkList.js";
+import { searchMovies } from "./modules/searchMovies.js";
 
 const main = document.querySelector('#main');
 const bookMarksBtn = document.querySelector('#bookMarksBtn');
-const modalScreen = document.getElementById('modalScreen');
-const modalBookmarkBtn = document.getElementById('modalBookmarkBtn');
+const movieSearchbar = document.querySelector("#movieSearchbar");
+const modalScreen = document.querySelector('#modalScreen');
+const modalBookmarkBtn = document.querySelector('#modalBookmarkBtn');
 
 
 window.onload = ()=>{
@@ -13,6 +15,7 @@ window.onload = ()=>{
 
   main.addEventListener('click',(e)=>{openModal(e)});
   bookMarksBtn.addEventListener('click', showBookmarkList);
+  movieSearchbar.addEventListener('keyup',(e)=>{searchMovies(e)});
   modalScreen.addEventListener('click', (e)=>modalClose(e));
   modalBookmarkBtn.addEventListener('click',(e)=>{handleBookmarkData(e)});
 }

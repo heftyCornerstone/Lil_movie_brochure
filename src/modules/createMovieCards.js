@@ -1,6 +1,6 @@
 import {getMovieData} from "./getTmdbData.js"
 
-const movieCardTemp = document.getElementById('movieCardTemp');
+const movieCardTemp = document.querySelector('#movieCardTemp');
 
 //영화 장르별로 분류하기
 function sortMoviesByGenre(moviesData){

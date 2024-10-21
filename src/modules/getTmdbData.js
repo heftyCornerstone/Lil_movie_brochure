@@ -32,12 +32,12 @@ async function getMovieData(){
 //     }
 // }
 
-//이름으로 영화 데이터 가져오기
-async function searchMovieByTitle(movieTitle){
+//이름으로 영화 데이터 가져오기 ...페이지 받아올 수 있도록 바꾸기
+async function getMovieByTitle(movieTitle){
     const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/search/movie?language=ko&query=${movieTitle}`, options);
     const searchedMovies = await rawSearchedMovie.json();
     return searchedMovies;
 }
 
 
-export {getMovieData, searchMovieByTitle}
+export {getMovieData, getMovieByTitle}

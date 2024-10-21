@@ -1,4 +1,4 @@
-import {searchMovieByTitle} from "./getTmdbData.js"
+import {getMovieByTitle} from "./getTmdbData.js"
 
 const modalScreen = document.getElementById('modalScreen');
 const modalPoster = document.querySelector('.modal_inner_modalPoster img');;
@@ -36,7 +36,7 @@ function handleBookmarkData(e){
 //모달창 컨텐츠 채우기
 async function generateModalContents(movieCard){
   const movieTitle = movieCard.querySelector('.movieCard_info_inner_movieTitle').innerHTML;
-  const movieData = await searchMovieByTitle(movieTitle);
+  const movieData = await getMovieByTitle(movieTitle);
   const currentMovie = movieData.results[0];
   const bookmarkSet = bookmarkParser();
   const isBookmarked = (bookmarkSet) ? bookmarkSet.has(movieTitle) : null;
