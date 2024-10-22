@@ -12,7 +12,7 @@ function startInfiniteScroll(io){
     const movieListContents = document.querySelector('.movieListContents');
     if(!movieListContents) return;
 
-    const isOnSearching = movieListContents.classList.contains('onSisOnSearching');
+    const isOnSearching = movieListContents.classList.contains('onSearching');
     const lastCard = movieListContents.querySelector('.lastCard');
     if(isOnSearching && lastCard) io.observe(lastCard);
 }
@@ -20,7 +20,7 @@ function startInfiniteScroll(io){
 //마지막 요소가 화면에 들어오면 새로운 컨텐츠 로드하기
 async function infiniteScroll(entries, io){
     const movieListContents = document.querySelector('.movieListContents');
-    const isOnSearching = movieListContents.classList.contains('onSisOnSearching');
+    const isOnSearching = movieListContents.classList.contains('onSearching');
     const pageToLoad = scrollingData.get('pageToLoad');
 
     //search페이지가 아니거나, 컨텐츠를 모두 로드하면 리턴

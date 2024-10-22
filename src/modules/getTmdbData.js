@@ -22,7 +22,6 @@ async function getMovieData(){
 //이름으로 영화 데이터 가져오기
 async function getMovieByTitle(movieTitle, page=1){
     try{
-        console.log(page);
         const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/search/movie?language=ko&page=${page}&query=${movieTitle}`, options);
         const searchedMovies = await rawSearchedMovie.json();
 
