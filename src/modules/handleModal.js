@@ -16,9 +16,12 @@ async function generateModalContents(movieCard){
   const movieData = await getMovieById(movieId);
   const bookmarkSet = bookmarkParser();
   const isBookmarked = (bookmarkSet) ? bookmarkSet.has(movieId) : null;
+  const movieDataPoster = movieData.poster_path;
+  const posterPath = (movieDataPoster) ? 
+    `https://image.tmdb.org/t/p/original${movieData.poster_path}` : '../../src/imgs/no_poster_available.png'
 
   modal.setAttribute('id', movieId);
-  modalPoster.setAttribute('src',`https://image.tmdb.org/t/p/original/${movieData.poster_path}`);
+  modalPoster.setAttribute('src', posterPath);
   modalTitle.innerHTML = movieData.title;
   modalReleaseDate.innerHTML = `개봉일: ${movieData.release_date}`;
   modalStars.innerHTML = `평점: ${Math.round(movieData.vote_average)}/10`;

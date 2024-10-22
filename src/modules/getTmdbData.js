@@ -21,16 +21,27 @@ async function getMovieData(){
 
 //이름으로 영화 데이터 가져오기
 async function getMovieByTitle(movieTitle, page=1){
-    const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/search/movie?language=ko&page=${page}&query=${movieTitle}`, options);
-    const searchedMovies = await rawSearchedMovie.json();
-    return searchedMovies;
+    try{
+        console.log(page);
+        const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/search/movie?language=ko&page=${page}&query=${movieTitle}`, options);
+        const searchedMovies = await rawSearchedMovie.json();
+
+        return searchedMovies;
+    } catch(err) { 
+        throw(err);
+    }
 }
 
 //아이디로 영화 데이터 가져오기
 async function getMovieById(movieId){
-    const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options);
-    const searchedMovie = await rawSearchedMovie.json();
-    return searchedMovie;
+    try{
+        const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options);
+        const searchedMovie = await rawSearchedMovie.json();
+
+        return searchedMovie;
+    } catch(err) { 
+        throw(err);
+    }
 }
 
 

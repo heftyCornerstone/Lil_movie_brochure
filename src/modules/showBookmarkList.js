@@ -37,10 +37,10 @@ function showBookmarkList(){
         bookMarksBtn.innerHTML = "북마크"
         paintHomeView();
     } else {
-        const bookmarks = bookmarkParser();
+        const bookmarksArr = [...bookmarkParser()];
 
         bookMarksBtn.innerHTML = "돌아가기";
-        paintMovieListView(bookmarks);
+        paintMovieListView(bookmarksArr);
     }
     bookMarksBtn.classList.toggle('goBack');
 }

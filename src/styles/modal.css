@@ -66,15 +66,15 @@
 .modalInfo_head_dateAndStars{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "   .     date      stars   ";
+    grid-template-areas: "  .  date  stars  ";
 }
 
-.dateAndStars_releaseDate{
+.modalInfo_head_dateAndStars_releaseDate{
     grid-area: date;
     text-align: center;
     font-size: 14px;
 }
-.dateAndStars_stars{
+.modalInfo_head_dateAndStars_stars{
     grid-area: stars;
     text-align: end;
 }

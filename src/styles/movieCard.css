@@ -1,3 +1,12 @@
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
 .movieCardWrapper{
     padding: 0 10px;
 }
@@ -7,6 +16,7 @@
     border-radius: 15px;
     overflow: hidden;
     background-color: white;
+    animation: 0.5s fadeIn;
 }
 .movieCard_poster{
     width:100%;

@@ -1,10 +1,15 @@
 import { createMovieCard } from "./createMovieCards.js";
 import { getMovieById } from "./getTmdbData.js";
+import { infiniteScroll, startInfiniteScroll } from "./infiniteScrollForSearching.js";
 
 const main = document.querySelector('#main');
+const observerOptions = {
+    threshold: 0.5
+  };
+const scrollObserver = new IntersectionObserver(async (entries, io) => {await infiniteScroll(entries, io)},observerOptions);
 
 //홈 화면 -> 영화 카드 리스트 화면으로 전환
-function paintMovieListView(movieIdArr){ 
+async function paintMovieListView(movieIdArr){ 
     const movieListContents = document.querySelector('.movieListContents');
     const homeView = document.querySelector('.homeContents');
     const newMovieListContents = document.createElement('div');
@@ -17,17 +22,25 @@ function paintMovieListView(movieIdArr){
     
 
     //영화 카드 채워넣기
-    appendMovieCardList(movieIdArr, newMovieListContents);
+    await appendMovieCardList(movieIdArr, newMovieListContents);
+
+    //무한스크롤 관찰 시작
+    startInfiniteScroll(scrollObserver);
 }
 
-//영화 id가 든 어레이를 이용하여 주어진 화면에 영화 카드를 채워넣는다.
+//appendTo에 영화 카드 채워넣기
 async function appendMovieCardList(movieIdArr, appendTo){
-    for(let movieId of movieIdArr) {
-        const movieData = await getMovieById(movieId);
+    for(let i=0; i<movieIdArr.length; i++){
+        const movieData = await getMovieById(movieIdArr[i]);
         const newCard = createMovieCard(movieData);
 
+        if(i===(movieIdArr.length-1)) newCard.classList.add('lastCard');
+        
         appendTo.appendChild(newCard);
     }
 }
 
 export {paintMovieListView, appendMovieCardList}
+
+
+// 유동적으로 마지막 요소를 찾지 말고, 마지막 요소에 클래스를 붙이는게 낫겠어

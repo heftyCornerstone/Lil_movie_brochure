@@ -10,7 +10,6 @@ const movieSearchbar = document.querySelector("#movieSearchbar");
 const modalScreen = document.querySelector('#modalScreen');
 const modalBookmarkBtn = document.querySelector('#modalBookmarkBtn');
 
-
 window.onload = ()=>{
   paintHomeView();
 
@@ -33,4 +32,7 @@ window.onload = ()=>{
 반복적인 코드를 줄이자
   영화 카테고리명
 주석 달자
+
+
+이제 시기 적절하게 실행만 시키면 되는데
 */
