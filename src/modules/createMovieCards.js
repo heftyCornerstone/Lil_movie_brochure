@@ -52,7 +52,7 @@ function createMovieCard(movieData){
   return newMovieCard;
 }
 
-async function putMovieCardsByGenre(){
+async function putMovieCardsByCategory(){
   const moviesObj = await getPopularMovie();
   const sortedMoviesObj = sortMoviesByGenre(moviesObj);
   const sortedMoviesArr = Object.entries(sortedMoviesObj);
@@ -81,4 +81,4 @@ async function putMovieCardsByGenre(){
   })
 }
 
-export {putMovieCardsByGenre, createMovieCard}
+export {putMovieCardsByCategory, createMovieCard}

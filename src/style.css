@@ -22,16 +22,17 @@ header{
     right: 10px;
     overflow: hidden;
 }
-#bookMarksBtn{
+#bookMarkBtn{
     width: 85px;
     height: 35px;
+    cursor: pointer;
     border:none;
     border-radius: 5px;
     font-weight: bold;
     font-size: 14px;
     background-color:rgb(236, 230, 231)
 }
-#bookMarksBtn:hover{
+#bookMarkBtn:hover{
     background-color:rgb(193, 193, 193)
 }
 .title{

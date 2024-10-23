@@ -2,10 +2,9 @@ import { getMovieById } from "./getTmdbData.js";
 import { paintHomeView } from "./paintHomeView.js";
 import { paintMovieListView } from "./paintMovieListView.js";
 
-const bookMarksBtn = document.querySelector('#bookMarksBtn');
+const bookMarkBtn = document.querySelector('#bookMarkBtn');
 const modalBookmarkBtn = document.querySelector('#modalBookmarkBtn');
 
-//로컬스토리지에서 북마크 얻어오기
 function bookmarkParser(){
     const rawBookmarks = localStorage.getItem('bookmarks');
     const parsed = (rawBookmarks) ? JSON.parse(rawBookmarks) : null;
@@ -14,7 +13,6 @@ function bookmarkParser(){
     return bookmarkSet
 }
 
-  //북마크 삭제와 추가
 function handleBookmarkData(e){
     const movieId = e.target.closest('.modal').getAttribute('id');
     const bookmarkSet = bookmarkParser();
@@ -29,12 +27,16 @@ function handleBookmarkData(e){
     modalBookmarkBtn.innerHTML = (isBookmarked) ? '북마크 추가하기' : '북마크 삭제하기';
 }
 
-//북마크 보기 홈으로 가기 버튼 토글
-async function bookMarkBtnToggle(){
-    const isMovieListView = bookMarksBtn.classList.contains('goBack');
+function bookmarkbBtnToggle(){
+    const isGoBackMode = bookMarkBtn.classList.contains('goBack');
+    bookMarkBtn.innerHTML = (isGoBackMode) ? "📕북마크" : "🏠돌아가기";
+    bookMarkBtn.classList.toggle('goBack');
+}
+
+async function bookMarkScreenToggle(){
+    const isMovieListView = bookMarkBtn.classList.contains('goBack');
 
     if(isMovieListView){
-        bookMarksBtn.innerHTML = "📕북마크"
         await paintHomeView();
     } else {
         const bookmarksArr = [...bookmarkParser()];
@@ -45,10 +47,10 @@ async function bookMarkBtnToggle(){
             movieData.push(curMovieData);
         }
 
-        bookMarksBtn.innerHTML = "🏠돌아가기";
         paintMovieListView(movieData);
     }
-    bookMarksBtn.classList.toggle('goBack');
+
+    bookmarkbBtnToggle();
 }
 
-export {bookmarkParser, handleBookmarkData, bookMarkBtnToggle}
+export {bookmarkParser, handleBookmarkData, bookmarkbBtnToggle, bookMarkScreenToggle}

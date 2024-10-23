@@ -1,5 +1,5 @@
 import { movieCategoryData } from "../movieCategoryData/categoryAndGenre.js";
-import { putMovieCardsByGenre } from "./createMovieCards.js";
+import { putMovieCardsByCategory } from "./createMovieCards.js";
 import { slideMovieCards } from "./handleSlider.js";
 
 const main = document.querySelector('#main');
@@ -31,7 +31,7 @@ async function paintHomeView(){
   if(homeView) return;
   if(movieListView) main.removeChild(movieListView);
   GenMovieCategoryWindows();
-  await putMovieCardsByGenre();
+  await putMovieCardsByCategory();
 
   for(let i=0; i<categorySlider.length; i++) {
     categorySlider[i].addEventListener("click", slideMovieCards());

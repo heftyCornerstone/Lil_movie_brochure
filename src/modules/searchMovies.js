@@ -1,11 +1,17 @@
 import { getMovieByTitle } from "./getTmdbData.js";
 import { paintHomeView } from "./paintHomeView.js";
 import { paintMovieListView } from "./paintMovieListView.js";
+import { infiniteScroll, startInfiniteScroll } from "./infiniteScrollForSearching.js";
 
-//검색기능 이용 여부를 onSearching 클래스로 표시
+const observerOptions = {
+    threshold: 0.5
+  };
+const scrollObserver = new IntersectionObserver(async (entries, io) => {await infiniteScroll(entries, io)},observerOptions);
+
 function onSearchingClassToggle(option){
     const  movieListContents = document.querySelector('.movieListContents');
-
+    
+    //검색기능 이용 여부를 onSearching 클래스로 표시
     if(option==='add'){
         const isOnSearching = movieListContents.classList.contains('onSearching');
         if(!isOnSearching) movieListContents.classList.add('onSearching');
@@ -36,6 +42,9 @@ async function searchMovies(e){
 
     paintMovieListView(searchedMovieData);
     onSearchingClassToggle('add');
+
+    //무한 스크롤 관찰 시작
+    startInfiniteScroll(scrollObserver);
 }
 
 function debounedSearchMovies() {
