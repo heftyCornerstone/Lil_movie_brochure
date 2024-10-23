@@ -42,7 +42,7 @@ function createMovieCard(movieData){
   const stars = newMovieCard.querySelector('.movieCard_info_inner_stars');
   const movieDataPoster = movieData.poster_path;
   const posterPath = (movieDataPoster) ? 
-    `https://image.tmdb.org/t/p/original${movieData.poster_path}` : '../../src/imgs/no_poster_available.png'
+    `https://image.tmdb.org/t/p/original${movieData.poster_path}` : '../../src/noPosterImg/no_poster_available.png'
 
   thisMovieCard.setAttribute('id', movieData.id);
   posterImg.setAttribute('src', posterPath);
