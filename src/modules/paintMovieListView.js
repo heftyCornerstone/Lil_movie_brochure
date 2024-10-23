@@ -1,6 +1,7 @@
 import { createMovieCard } from "./createMovieCards.js";
 
 const main = document.querySelector('#main');
+const movieSearchbar = document.querySelector('#movieSearchbar');
 
 function paintMovieListView(movieIdArr){ 
     const movieListContents = document.querySelector('.movieListContents');
@@ -12,6 +13,7 @@ function paintMovieListView(movieIdArr){
     if(homeView) main.replaceChild(newMovieListContents, homeView);
     if(movieListContents) main.replaceChild(newMovieListContents, movieListContents);
     main.appendChild(newMovieListContents);
+    movieSearchbar.innerHTML = '';
     
     appendMovieCardList(movieIdArr, newMovieListContents);
 }
