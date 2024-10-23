@@ -83,7 +83,7 @@
 
 ## 북마크 화면
 
-<img src='https://github.com/user-attachments/assets/c9fe556b-5866-46ac-8a17-00ae55676883' width='60%'>
+<img src='https://github.com/user-attachments/assets/659aa988-e8f0-45ce-9c1f-3bbbc8fc4836' width='60%'>
 
 북마크한 영화를 확인할 수 있는 화면입니다.<br>
 북마크 된 영화의 영화 카드가 나열되어 있으며, 각 영화 카드는 물론 모달창을 띄웁니다.
