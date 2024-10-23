@@ -18,8 +18,21 @@ header{
 }
 .bookMarksWrapper{
     position:absolute;
-    background-color: rgb(217, 217, 217);
-    right: 0;
+    top: 10px;
+    right: 10px;
+    overflow: hidden;
+}
+#bookMarksBtn{
+    width: 85px;
+    height: 35px;
+    border:none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    background-color:rgb(236, 230, 231)
+}
+#bookMarksBtn:hover{
+    background-color:rgb(193, 193, 193)
 }
 .title{
     display: flex;

@@ -5,12 +5,14 @@ function slideMovieCards(){
   
   return (e)=>{
     const isTargetSliderBtn = e.target.classList.contains('sliderBtn');
+    
     if(isTargetSliderBtn) {
       const isLeftSliderBtn = e.target.classList.contains('LeftSliderBtn');
-      const movieCardWid = document.getElementsByClassName('movieCardWrapper')[0].offsetWidth;
-      const cardsContainerWid = e.target.parentNode.querySelector('.movieCardsContainer').offsetWidth;
-      const cardBoard = e.target.parentNode.querySelector('.movieCardsBoard');
-      const cardBoardWid = e.target.parentNode.querySelector('.movieCardsBoard').offsetWidth;
+      const movieCardWid = document.querySelector('.movieCardWrapper').offsetWidth;
+      const innerSlider = e.target.closest('.category_inner_slider');
+      const cardsContainerWid = innerSlider.querySelector('.movieCardsContainer').offsetWidth;
+      const cardBoard = innerSlider.querySelector('.movieCardsBoard');
+      const cardBoardWid = innerSlider.querySelector('.movieCardsBoard').offsetWidth;
       const cardBoardEnd = cardBoardWid - cardsContainerWid;
 
     

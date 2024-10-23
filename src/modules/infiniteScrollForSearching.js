@@ -23,7 +23,7 @@ async function infiniteScroll(entries, io){
     const isOnSearching = movieListContents.classList.contains('onSearching');
     const pageToLoad = scrollingData.get('pageToLoad');
 
-    //search페이지가 아니거나, 컨텐츠를 모두 로드하면 리턴
+    //search페이지가 아니거나, 컨텐츠를 모두 로드했다면 리턴
     if(!isOnSearching || pageToLoad==='max') return;
 
     const inputText = movieSearchbar.value.toLowerCase();

@@ -13,10 +13,9 @@ function bookmarkParser(){
     return bookmarkSet
 }
 
-  //북마크 삭제와 추가 로직
+  //북마크 삭제와 추가
 function handleBookmarkData(e){
     const movieId = e.target.closest('.modal').getAttribute('id');
-    //const movieTitle = e.target.closest('.modal_inner').querySelector('.modalInfo_head_title h2').innerHTML
     const bookmarkSet = bookmarkParser();
     const isBookmarked = (bookmarkSet) ? bookmarkSet.has(movieId) : null;
     let bookmarkString = '[]';
@@ -29,20 +28,20 @@ function handleBookmarkData(e){
     modalBookmarkBtn.innerHTML = (isBookmarked) ? '북마크 추가하기' : '북마크 삭제하기';
 }
 
-//북마크 보기 / 홈으로 가기 토글 버튼   ...버튼 글자는 아이콘으로 바꾸자
-function showBookmarkList(){
+//북마크 보기 홈으로 가기 버튼 토글
+function bookMarkBtnToggle(){
     const isMovieListView = bookMarksBtn.classList.contains('goBack');
 
     if(isMovieListView){
-        bookMarksBtn.innerHTML = "북마크"
+        bookMarksBtn.innerHTML = "📕북마크"
         paintHomeView();
     } else {
         const bookmarksArr = [...bookmarkParser()];
 
-        bookMarksBtn.innerHTML = "돌아가기";
+        bookMarksBtn.innerHTML = "🏠돌아가기";
         paintMovieListView(bookmarksArr);
     }
     bookMarksBtn.classList.toggle('goBack');
 }
 
-export {bookmarkParser, handleBookmarkData, showBookmarkList}
+export {bookmarkParser, handleBookmarkData, bookMarkBtnToggle}

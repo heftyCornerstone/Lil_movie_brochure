@@ -1,7 +1,8 @@
 import { getMovieByTitle } from "./getTmdbData.js";
 import { paintHomeView } from "./paintHomeView.js";
-import { appendMovieCardList, paintMovieListView } from "./paintMovieListView.js";
+import { paintMovieListView } from "./paintMovieListView.js";
 
+//검색기능 이용 여부를 onSearching 클래스로 표시
 function onSearchingClassToggle(option){
     const  movieListContents = document.querySelector('.movieListContents');
     const isOnSearching = movieListContents.classList.contains('onSearching');
@@ -10,7 +11,7 @@ function onSearchingClassToggle(option){
     } else if(option==='remove') {
         movieListContents.classList.remove('onSearching');
     } else {
-        console.error(`'${option}' is not a legit option`);
+        console.error(`'${option}' is not a valid option`);
     }
 }
 
@@ -34,6 +35,3 @@ async function searchMovies(e){
 }
 
 export {searchMovies}
-
-
-//버그 고치기 : 검색창에서 지우기를 빠르게 하면 홈 화면으로 돌아가지 못하고 텅 빈 무비카드리스트 화면만 뜨는 버그

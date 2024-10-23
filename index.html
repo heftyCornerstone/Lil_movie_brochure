@@ -12,7 +12,7 @@
     <body>
         <header>
             <div class="header_inner">
-                <div class="bookMarksWrapper"><button id="bookMarksBtn" type="button">북마크</button></div>
+                <div class="bookMarksWrapper"><button id="bookMarksBtn" type="button">📕북마크</button></div>
                 <div class="title">
                     <h1>Lil Movie Brochure</h1>
                     <input id="movieSearchbar" type="text" placeholder="어떤 영화를 찾으시나요?">
@@ -27,7 +27,7 @@
         <div id="modalScreen" class="closeModal">
             <div class="modal">
                 <div class="modal_inner">
-                    <div class="modalCloseBtnWrapper"><button id="modalCloseBtn" type="button">X</button></div>
+                    <div class="modalCloseBtnWrapper"><button id="modalCloseBtn" type="button">✖</button></div>
                     <div class="modal_inner_modalPoster">
                         <img src="https://media.posterlounge.com/img/products/770000/760129/760129_poster.jpg" alt="img">
                     </div>
@@ -54,12 +54,20 @@
                 <div class="category_inner">
                     <div class="category_inner_title"><h2></h2></div>
                     <div class="category_inner_slider">
-                        <button class='sliderBtn LeftSliderBtn' type="button"><</button>
+                        <button class='sliderBtn LeftSliderBtn' type="button">
+                            <svg class='sliderBtn  LeftSliderBtn' width="17" height="56" viewBox="0 0 17 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class='sliderBtn  LeftSliderBtn' d="M14.5 1L3 28L14.5 55" stroke="#E1E1E1" stroke-width="4"/>
+                            </svg>
+                        </button>
                         <div class="movieCardsContainer">
                             <div class="movieCardsBoard">
                             </div>
                         </div>
-                        <button class='sliderBtn RightSliderBtn' type="button">></button>
+                        <button class='sliderBtn RightSliderBtn' type="button">
+                            <svg class='sliderBtn RightSliderBtn' width="17" height="56" viewBox="0 0 17 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class='sliderBtn RightSliderBtn' d="M2.5 1L14 28L2.5 55" stroke="#E1E1E1" stroke-width="4"/>
+                            </svg>    
+                        </button>
                     </div>
                 </div>
             </section>

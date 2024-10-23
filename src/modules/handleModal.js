@@ -10,7 +10,7 @@ const modalStars = document.querySelector('.modalInfo_head_dateAndStars_stars');
 const modalOverview = document.querySelector('.modalInfo_overview');
 const modalBookmarkBtn = document.querySelector('#modalBookmarkBtn');
 
-//모달창 컨텐츠 채우기
+
 async function generateModalContents(movieCard){
   const movieId = movieCard.getAttribute('id');
   const movieData = await getMovieById(movieId);
@@ -29,7 +29,7 @@ async function generateModalContents(movieCard){
   modalBookmarkBtn.innerHTML = (isBookmarked) ? '북마크 삭제하기' : '북마크 추가하기';
 }
 
-//모달 띄우기
+
 async function openModal(e){
   const targetMovieCard = e.target.closest('.movieCard');
 

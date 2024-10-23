@@ -1,29 +1,23 @@
-import { putMovieCards } from "./createMovieCards.js";
+import { movieCategoryData } from "../movieCategoryData/categoryAndGenre.js";
+import { putMovieCardsByGenre } from "./createMovieCards.js";
 import { slideMovieCards } from "./handleSlider.js";
 
 const main = document.querySelector('#main');
 const contentsTemp = document.querySelector('#contentsTemp');
 const categorySlider = document.getElementsByClassName('category_inner_slider');
 
-function generateHomeView(){
-  const categoryIds = ['adventure', 'withLovedOnes', 'thrillingStories', 'crimeAndWar', 'animation', 'realWorld'];
-  const categoryNames = [
-    '모험의 세계로', 
-    '사랑하는 사람들과 함께', 
-    '간담이 서늘해지는 이야기들', 
-    '범죄 그리고 전쟁', 
-    '애니메이션', 
-    '현실 속 우리들의 이야기'
-  ];
+function GenMovieCategoryWindows(){
   const homeContents = document.createElement('div');
   homeContents.classList.add('homeContents');
 
-  categoryNames.forEach((curName, i)=>{
+  const categoryData = Object.entries(movieCategoryData);
+
+  categoryData.forEach(([categoryId, nameAndgenreObj])=>{
     const newContentsTemp = contentsTemp.content.cloneNode(true).children[0];
     const categoryTitle = newContentsTemp.querySelector('.category_inner_title h2');
-    newContentsTemp.setAttribute('id', categoryIds[i]);
-    categoryTitle.innerHTML = curName;
-    
+    newContentsTemp.setAttribute('id', categoryId);
+    categoryTitle.innerHTML = nameAndgenreObj.name;
+
     homeContents.appendChild(newContentsTemp);
   })
 
@@ -33,8 +27,8 @@ function generateHomeView(){
 function paintHomeView(){
   const movieListView = document.querySelector('.movieListContents');
   if(movieListView) main.removeChild(movieListView);
-  generateHomeView();
-  putMovieCards();
+  GenMovieCategoryWindows();
+  putMovieCardsByGenre();
 
   for(let i=0; i<categorySlider.length; i++) {
     categorySlider[i].addEventListener("click", slideMovieCards());

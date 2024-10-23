@@ -1,4 +1,4 @@
-const options = {
+const getOptions = {
     method: 'GET',
     headers: {
         accept: 'application/json',
@@ -6,10 +6,9 @@ const options = {
     }
 };
 
-//영화 데이터 가져오기
-async function getMovieData(){
+async function getPopularMovie(){
     try{
-        const rawMovieData = await fetch('https://api.themoviedb.org/3/movie/popular?language=ko&page=1&region=KR', options);
+        const rawMovieData = await fetch('https://api.themoviedb.org/3/movie/popular?language=ko&page=1&region=KR', getOptions);
         const parsedMovieData = await rawMovieData.json();
         const movieData = parsedMovieData.results;
 
@@ -19,10 +18,9 @@ async function getMovieData(){
     }
 }
 
-//이름으로 영화 데이터 가져오기
 async function getMovieByTitle(movieTitle, page=1){
     try{
-        const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/search/movie?language=ko&page=${page}&query=${movieTitle}`, options);
+        const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/search/movie?language=ko&page=${page}&query=${movieTitle}`, getOptions);
         const searchedMovies = await rawSearchedMovie.json();
 
         return searchedMovies;
@@ -31,10 +29,9 @@ async function getMovieByTitle(movieTitle, page=1){
     }
 }
 
-//아이디로 영화 데이터 가져오기
 async function getMovieById(movieId){
     try{
-        const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options);
+        const rawSearchedMovie = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, getOptions);
         const searchedMovie = await rawSearchedMovie.json();
 
         return searchedMovie;
@@ -44,18 +41,4 @@ async function getMovieById(movieId){
 }
 
 
-export {getMovieData, getMovieByTitle, getMovieById}
-
-
-//영화 장르 id 가져오기
-// async function getMovieGenreList(){
-//     try{
-//         const rawGenreList = await fetch('https://api.themoviedb.org/3/genre/movie/list?language=ko', options);
-//         const parsedGenreList = await rawGenreList.json();
-//         const genreListObj = parsedGenreList.genres;
-
-//         return genreListObj;
-//     } catch(err) { 
-//         throw(err); 
-//     }
-// }
+export {getPopularMovie, getMovieByTitle, getMovieById}

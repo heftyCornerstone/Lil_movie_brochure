@@ -25,7 +25,9 @@
     position: relative;
     width: 30px;
     height: 60px;
-    z-index: 100;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
 .movieCardsContainer{
     width: 100%;

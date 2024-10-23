@@ -21,14 +21,12 @@ async function paintMovieListView(movieIdArr){
     main.appendChild(newMovieListContents);
     
 
-    //영화 카드 채워넣기
     await appendMovieCardList(movieIdArr, newMovieListContents);
 
-    //무한스크롤 관찰 시작
+    //무한 스크롤 관찰 시작
     startInfiniteScroll(scrollObserver);
 }
 
-//appendTo에 영화 카드 채워넣기
 async function appendMovieCardList(movieIdArr, appendTo){
     for(let i=0; i<movieIdArr.length; i++){
         const movieData = await getMovieById(movieIdArr[i]);
@@ -41,6 +39,3 @@ async function appendMovieCardList(movieIdArr, appendTo){
 }
 
 export {paintMovieListView, appendMovieCardList}
-
-
-// 유동적으로 마지막 요소를 찾지 말고, 마지막 요소에 클래스를 붙이는게 낫겠어
