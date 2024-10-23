@@ -21,21 +21,21 @@ async function paintMovieListView(movieIdArr){
     main.appendChild(newMovieListContents);
     
 
-    await appendMovieCardList(movieIdArr, newMovieListContents);
+    appendMovieCardList(movieIdArr, newMovieListContents);
 
     //무한 스크롤 관찰 시작
     startInfiniteScroll(scrollObserver);
 }
 
-async function appendMovieCardList(movieIdArr, appendTo){
-    for(let i=0; i<movieIdArr.length; i++){
-        const movieData = await getMovieById(movieIdArr[i]);
+function appendMovieCardList(movieDataArr, appendTo){//어딘가에서 가져온 영화 데이터를 인자로 주자.
+    for(let i=0; i<movieDataArr.length; i++){
+        const movieData = movieDataArr[i];
         const newCard = createMovieCard(movieData);
 
-        if(i===(movieIdArr.length-1)) newCard.classList.add('lastCard');
+        if(i===(movieDataArr.length-1)) newCard.classList.add('lastCard');
         
         appendTo.appendChild(newCard);
     }
 }
 
-export {paintMovieListView, appendMovieCardList}
+export {paintMovieListView}

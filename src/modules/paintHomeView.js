@@ -24,11 +24,11 @@ function GenMovieCategoryWindows(){
   main.appendChild(homeContents);
 }
 
-function paintHomeView(){
+async function paintHomeView(){
   const movieListView = document.querySelector('.movieListContents');
   if(movieListView) main.removeChild(movieListView);
   GenMovieCategoryWindows();
-  putMovieCardsByGenre();
+  await putMovieCardsByGenre();
 
   for(let i=0; i<categorySlider.length; i++) {
     categorySlider[i].addEventListener("click", slideMovieCards());

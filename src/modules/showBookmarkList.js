@@ -1,3 +1,4 @@
+import { getMovieById } from "./getTmdbData.js";
 import { paintHomeView } from "./paintHomeView.js";
 import { paintMovieListView } from "./paintMovieListView.js";
 
@@ -29,17 +30,22 @@ function handleBookmarkData(e){
 }
 
 //북마크 보기 홈으로 가기 버튼 토글
-function bookMarkBtnToggle(){
+async function bookMarkBtnToggle(){
     const isMovieListView = bookMarksBtn.classList.contains('goBack');
 
     if(isMovieListView){
         bookMarksBtn.innerHTML = "📕북마크"
-        paintHomeView();
+        await paintHomeView();
     } else {
         const bookmarksArr = [...bookmarkParser()];
+        const movieData = [];
+        for(movieId of bookmarksArr){
+            const curMovieData = await getMovieById(movieId);
+            movieData.push(curMovieData);
+        }
 
         bookMarksBtn.innerHTML = "🏠돌아가기";
-        paintMovieListView(bookmarksArr);
+        paintMovieListView(movieData);
     }
     bookMarksBtn.classList.toggle('goBack');
 }

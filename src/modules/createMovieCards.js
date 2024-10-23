@@ -67,7 +67,7 @@ async function putMovieCardsByGenre(){
       movieCards.forEach((movieCard)=>{ categoryDomElement.appendChild(movieCard); });
     } else {
       //영화 없음
-      const sliderBtnList = categoryDomElement.parentNode.parentNode.querySelectorAll('.sliderBtn');
+      const sliderBtnList = categoryDomElement.closest('.category_inner_slider').querySelectorAll('.sliderBtn');
       const noMoviesBanner = createNoMoviesBanner();
 
       sliderBtnList.entries().forEach(([i, sliderBtn])=>{sliderBtn.style.display='none';});

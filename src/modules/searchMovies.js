@@ -16,22 +16,31 @@ function onSearchingClassToggle(option){
 }
 
 async function searchMovies(e){
-    if(e.target.value==='') {
+    const searchBarText = e.target.value;
+    
+    //검색바가 비어버린다면 홈으로
+    if(!searchBarText.length) {
         onSearchingClassToggle('remove');
-        return paintHomeView();
+        await paintHomeView();
+        return
     }
     
-    const inputText = e.target.value.toLowerCase();
+    const inputText = searchBarText.toLowerCase();
     const rawSearchedMovieData = await getMovieByTitle(inputText);
     const searchedMovieData = rawSearchedMovieData.results;
-    const movieIds = [];
-    
-    for(let i=0; i<searchedMovieData.length; i++){
-        const curMovieId = searchedMovieData[i].id;
-        movieIds.push(curMovieId);
-    }
-    paintMovieListView(movieIds); 
+
+    paintMovieListView(searchedMovieData);
     onSearchingClassToggle('add');
 }
 
-export {searchMovies}
+function debounedSearchMovies() {
+    let timer;
+    return (e) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+        searchMovies(e);
+        }, 600);
+    };
+}
+
+export {searchMovies, debounedSearchMovies}
