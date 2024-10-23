@@ -18,6 +18,7 @@
 .category_inner_slider{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     gap: 20px;
 }
@@ -30,17 +31,32 @@
     background-color: transparent;
 }
 .movieCardsContainer{
-    width: 100%;
-    max-width: 100%;
     overflow-x: hidden;
 }
+@media screen and (max-width: 1600px){
+    .movieCardsContainer {width: 1050px;}
+}
+@media screen and (max-width: 1400px){
+    .movieCardsContainer {width: 840px;}
+}
+@media screen and (max-width: 1200px){
+    .movieCardsContainer {width: 630px;}
+}
+@media screen and (max-width: 1000px){
+    .movieCardsContainer {width: 420px;}
+}
+@media screen and (max-width: 800px){
+    .movieCardsContainer {width: 210px;}
+}
+
 .movieCardsBoard{
     display: flex;
     width: max-content;
     height: 330px;
     transition: transform 0.5s ease;
 }
-
+/*1300, 1400, 1500, 1600*/
+/**/
 /*---------------------------------------------------no movies---------------------------------------------------*/
 .noMoviesBanner{
     display: flex;

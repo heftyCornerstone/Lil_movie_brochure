@@ -39,7 +39,8 @@ async function bookMarkBtnToggle(){
     } else {
         const bookmarksArr = [...bookmarkParser()];
         const movieData = [];
-        for(movieId of bookmarksArr){
+
+        for(const movieId of bookmarksArr){
             const curMovieData = await getMovieById(movieId);
             movieData.push(curMovieData);
         }

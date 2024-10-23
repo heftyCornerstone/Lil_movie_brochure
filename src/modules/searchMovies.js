@@ -5,14 +5,19 @@ import { paintMovieListView } from "./paintMovieListView.js";
 //검색기능 이용 여부를 onSearching 클래스로 표시
 function onSearchingClassToggle(option){
     const  movieListContents = document.querySelector('.movieListContents');
-    const isOnSearching = movieListContents.classList.contains('onSearching');
+
     if(option==='add'){
+        const isOnSearching = movieListContents.classList.contains('onSearching');
         if(!isOnSearching) movieListContents.classList.add('onSearching');
-    } else if(option==='remove') {
-        movieListContents.classList.remove('onSearching');
-    } else {
-        console.error(`'${option}' is not a valid option`);
+        return
     }
+    
+    if(option==='remove') {
+        if(movieListContents) movieListContents.classList.remove('onSearching');
+        return
+    }
+
+    console.error(`'${option}' is not a valid option`);
 }
 
 async function searchMovies(e){
@@ -39,7 +44,7 @@ function debounedSearchMovies() {
         clearTimeout(timer);
         timer = setTimeout(() => {
         searchMovies(e);
-        }, 600);
+        }, 300);
     };
 }
 

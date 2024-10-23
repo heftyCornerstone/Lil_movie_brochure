@@ -25,7 +25,10 @@ function GenMovieCategoryWindows(){
 }
 
 async function paintHomeView(){
+  const homeView = document.querySelector('.homeContents');
   const movieListView = document.querySelector('.movieListContents');
+
+  if(homeView) return;
   if(movieListView) main.removeChild(movieListView);
   GenMovieCategoryWindows();
   await putMovieCardsByGenre();
