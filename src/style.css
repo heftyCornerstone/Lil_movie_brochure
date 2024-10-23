@@ -72,10 +72,15 @@ main{
 }
 .movieListContents{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fit, 210px);
     width: 80%;
     margin: auto;
     gap: 40px 20px;
     min-height: 100vh;
+}
+.onSearching{
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    width: 80%;
+    margin: auto;
 }
 /*---------------------------------------------------------main-----------------------------------------------------------*/

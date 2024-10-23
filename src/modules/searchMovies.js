@@ -2,6 +2,7 @@ import { getMovieByTitle } from "./getTmdbData.js";
 import { paintHomeView } from "./paintHomeView.js";
 import { paintMovieListView } from "./paintMovieListView.js";
 import { infiniteScroll, startInfiniteScroll } from "./infiniteScrollForSearching.js";
+import { bookmarkbBtnToggle } from "./showBookmarkList.js";
 
 const observerOptions = {
     threshold: 0.5
@@ -28,7 +29,8 @@ function onSearchingClassToggle(option){
 
 async function searchMovies(e){
     const searchBarText = e.target.value;
-    
+    bookmarkbBtnToggle('toBookmark');
+
     //검색바가 비어버린다면 홈으로
     if(!searchBarText.length) {
         onSearchingClassToggle('remove');

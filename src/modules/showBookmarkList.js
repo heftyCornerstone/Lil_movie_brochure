@@ -4,6 +4,7 @@ import { paintMovieListView } from "./paintMovieListView.js";
 
 const bookMarkBtn = document.querySelector('#bookMarkBtn');
 const modalBookmarkBtn = document.querySelector('#modalBookmarkBtn');
+const movieSearchbar = document.querySelector('#movieSearchbar');
 
 function bookmarkParser(){
     const rawBookmarks = localStorage.getItem('bookmarks');
@@ -27,10 +28,18 @@ function handleBookmarkData(e){
     modalBookmarkBtn.innerHTML = (isBookmarked) ? '북마크 추가하기' : '북마크 삭제하기';
 }
 
-function bookmarkbBtnToggle(){
-    const isGoBackMode = bookMarkBtn.classList.contains('goBack');
-    bookMarkBtn.innerHTML = (isGoBackMode) ? "📕북마크" : "🏠돌아가기";
-    bookMarkBtn.classList.toggle('goBack');
+function bookmarkbBtnToggle(option){
+    if(option === 'goBack'){
+        bookMarkBtn.innerHTML = "🏠돌아가기";
+        bookMarkBtn.classList.add('goBack');
+        return
+    }
+    if(option === 'toBookmark'){
+        bookMarkBtn.innerHTML = "📕북마크"
+        bookMarkBtn.classList.remove('goBack');
+        return
+    }
+    console.error(`${option} is invalid option!`);
 }
 
 async function bookMarkScreenToggle(){
@@ -38,6 +47,7 @@ async function bookMarkScreenToggle(){
 
     if(isMovieListView){
         await paintHomeView();
+        bookmarkbBtnToggle('toBookmark');
     } else {
         const bookmarksArr = [...bookmarkParser()];
         const movieData = [];
@@ -48,9 +58,10 @@ async function bookMarkScreenToggle(){
         }
 
         paintMovieListView(movieData);
+        bookmarkbBtnToggle('goBack');
     }
 
-    bookmarkbBtnToggle();
+    movieSearchbar.value = '';
 }
 
 export {bookmarkParser, handleBookmarkData, bookmarkbBtnToggle, bookMarkScreenToggle}
