@@ -13,9 +13,9 @@ const modalBookmarkBtn = document.querySelector('#modalBookmarkBtn');
 window.onload = ()=>{
   paintHomeView();
 
-  main.addEventListener('click',(e)=>{openModal(e)});
+  main.addEventListener('click',async (e)=>{await openModal(e)});
   bookMarksBtn.addEventListener('click', bookMarkBtnToggle);
-  movieSearchbar.addEventListener('keyup',(e)=>{searchMovies(e)});
+  movieSearchbar.addEventListener('keyup',async (e)=>{await searchMovies(e)});
   modalScreen.addEventListener('click', (e)=>modalClose(e));
   modalBookmarkBtn.addEventListener('click',(e)=>{handleBookmarkData(e)});
 }
