@@ -59,11 +59,13 @@ async function putMovieCardsByGenre(){
   
   //장르별로 담긴 영화 리스트 순회
   sortedMoviesArr.forEach(([category, movies])=>{
+    const movieCardsContainer = document.getElementById(`${category}`).querySelector('.movieCardsContainer');
     const categoryDomElement = document.getElementById(`${category}`).querySelector('.movieCardsBoard');
     const movieCards = movies.map((curMovie)=>createMovieCard(curMovie));
     
     if (movieCards.length) {
       //영화 있음
+      movieCardsContainer.classList.add('contentful');
       movieCards.forEach((movieCard)=>{ categoryDomElement.appendChild(movieCard); });
     } else {
       //영화 없음
@@ -71,6 +73,7 @@ async function putMovieCardsByGenre(){
       const noMoviesBanner = createNoMoviesBanner();
 
       sliderBtnList.entries().forEach(([i, sliderBtn])=>{sliderBtn.style.display='none';});
+      movieCardsContainer.classList.add('noContents');
       categoryDomElement.style.width = '100%';
       categoryDomElement.appendChild(noMoviesBanner);
     }

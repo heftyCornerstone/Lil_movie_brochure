@@ -33,20 +33,21 @@
 .movieCardsContainer{
     overflow-x: hidden;
 }
+
 @media screen and (max-width: 1600px){
-    .movieCardsContainer {width: 1050px;}
+    .contentful {width: 1050px;}
 }
 @media screen and (max-width: 1400px){
-    .movieCardsContainer {width: 840px;}
+    .contentful {width: 840px;}
 }
 @media screen and (max-width: 1200px){
-    .movieCardsContainer {width: 630px;}
+    .contentful {width: 630px;}
 }
 @media screen and (max-width: 1000px){
-    .movieCardsContainer {width: 420px;}
+    .contentful {width: 420px;}
 }
 @media screen and (max-width: 800px){
-    .movieCardsContainer {width: 210px;}
+    .contentful {width: 210px;}
 }
 
 .movieCardsBoard{
@@ -58,6 +59,9 @@
 /*1300, 1400, 1500, 1600*/
 /**/
 /*---------------------------------------------------no movies---------------------------------------------------*/
+.noContents{
+    width:100%;
+}
 .noMoviesBanner{
     display: flex;
     justify-content: center;
