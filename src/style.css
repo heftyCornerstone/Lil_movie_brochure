@@ -72,8 +72,9 @@ main{
 }
 .movieListContents{
     display: grid;
-    grid-template-columns: repeat(auto-fill, 220px);
-    margin:0 10%;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    width: 80%;
+    margin: auto;
     gap: 40px 20px;
     min-height: 100vh;
 }
