@@ -33,6 +33,12 @@
 .movieCardsContainer{
     overflow-x: hidden;
 }
+@media screen and (max-width: 2200px){
+    .contentful {width: 1470px;}
+}
+@media screen and (max-width: 2000px){
+    .contentful {width: 1260px;}
+}
 @media screen and (max-width: 1800px){
     .contentful {width: 1260px;}
 }
