@@ -27,7 +27,7 @@ function paintMovieListView(movieIdArr){
     startInfiniteScroll(scrollObserver);
 }
 
-function appendMovieCardList(movieDataArr, appendTo){//어딘가에서 가져온 영화 데이터를 인자로 주자.
+function appendMovieCardList(movieDataArr, appendTo){
     for(let i=0; i<movieDataArr.length; i++){
         const movieData = movieDataArr[i];
         const newCard = createMovieCard(movieData);
