@@ -1,4 +1,4 @@
-# lil_movie_brochure
+# Lil movie brochure
 
 ## 사이트 구성
 
