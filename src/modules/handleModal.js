@@ -18,7 +18,7 @@ async function generateModalContents(movieCard){
   const isBookmarked = (bookmarkSet) ? bookmarkSet.has(movieId) : null;
   const movieDataPoster = movieData.poster_path;
   const posterPath = (movieDataPoster) ? 
-    `https://image.tmdb.org/t/p/original${movieData.poster_path}` : '../img/no_poster_available.png'
+    `https://image.tmdb.org/t/p/original${movieData.poster_path}` : './src/img/no_poster_available.png'
 
   modal.setAttribute('id', movieId);
   modalPoster.setAttribute('src', posterPath);
